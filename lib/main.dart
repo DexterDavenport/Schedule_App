@@ -27,9 +27,9 @@ class _MyAppState extends State<MyApp> {
   int _pageIndex = 0;
 
   static List<Widget> pages = [
-    HomePage(),
-    CalendarPage(),
-    JobsPage(),
+    const MyHomePage(title: 'Home Page'),
+    const CalendarPage(),
+    const JobsPage(),
   ];
 
   void _changeState(int index) {
