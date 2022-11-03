@@ -17,8 +17,8 @@ class CustomTheme with ChangeNotifier {
   static ThemeData get lightTheme {
     return ThemeData(
       primarySwatch: Colors.blue,
-      primaryColor: Colors.blue,
-      backgroundColor: Colors.white,
+      primaryColor: Colors.black26,
+      backgroundColor: Colors.black26,
       scaffoldBackgroundColor: Colors.white,
       textTheme: const TextTheme(
         headline1: TextStyle(color: Colors.black),
@@ -32,9 +32,9 @@ class CustomTheme with ChangeNotifier {
   static ThemeData get darkTheme {
     return ThemeData(
       primarySwatch: Colors.blueGrey,
-      primaryColor: Colors.black,
-      backgroundColor: Colors.yellow,
-      scaffoldBackgroundColor: Colors.black,
+      primaryColor: Colors.black26,
+      backgroundColor: Colors.white,
+      scaffoldBackgroundColor: const Color.fromARGB(255, 74, 91, 100),
       textTheme: const TextTheme(
         headline1: TextStyle(color: Colors.white),
         headline2: TextStyle(color: Colors.white),

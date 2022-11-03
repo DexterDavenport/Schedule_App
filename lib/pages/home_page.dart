@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle buttonStyle =
-        ElevatedButton.styleFrom(disabledBackgroundColor: Colors.lightBlue , disabledForegroundColor: Colors.black54,textStyle: const TextStyle(fontSize: 20));
+        ElevatedButton.styleFrom(disabledBackgroundColor: Theme.of(context).colorScheme.primary , disabledForegroundColor: Colors.black54,textStyle: const TextStyle(fontSize: 20));
 
     return Scaffold(
       appBar: AppBar(
@@ -33,13 +33,16 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               OutlinedButton(
+                style: OutlinedButton.styleFrom(),
                   onPressed: () {
                     setState(() {
                       calendarView = CalendarView.month;
                       calendarController.view = calendarView;
                     });
                   },
-                  child: const Text('Month View')),
+                  child: const Text('Month View'),
+                  ),
+                  
               OutlinedButton(
                   onPressed: () {
                     setState(() {
@@ -60,9 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Expanded(
             child: SfCalendar(
-                view: calendarView,
-                controller: calendarController,
-                dataSource: MeetingDataSource(getAppointments())),
+              cellBorderColor: Theme.of(context).backgroundColor, 
+              view: calendarView,
+              controller: calendarController,
+              dataSource: MeetingDataSource(getAppointments())),
           ),
           ElevatedButton(
             style: buttonStyle,

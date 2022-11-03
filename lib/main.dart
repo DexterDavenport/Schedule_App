@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scheduler/pages/home_page.dart';
-import 'package:scheduler/pages/calendar_page.dart';
 import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/contexts/themes.dart';
+import 'package:scheduler/pages/settings_page.dart';
 import 'components/navbar.dart';
 
 void main() => runApp(const MyApp());
@@ -28,8 +28,9 @@ class _MyAppState extends State<MyApp> {
 
   static List<Widget> pages = [
     const MyHomePage(title: 'Home Page'),
-    const CalendarPage(),
+    // const CalendarPage(),
     const JobsPage(),
+    const SettingsPage(),
   ];
 
   void _changeState(int index) {
