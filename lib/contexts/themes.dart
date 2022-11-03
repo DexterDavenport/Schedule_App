@@ -18,7 +18,6 @@ class CustomTheme with ChangeNotifier {
     return ThemeData(
       primarySwatch: Colors.blue,
       primaryColor: Colors.blue,
-      accentColor: Colors.white,
       backgroundColor: Colors.white,
       scaffoldBackgroundColor: Colors.white,
       textTheme: const TextTheme(
@@ -34,7 +33,6 @@ class CustomTheme with ChangeNotifier {
     return ThemeData(
       primarySwatch: Colors.blueGrey,
       primaryColor: Colors.black,
-      accentColor: Colors.white,
       backgroundColor: Colors.yellow,
       scaffoldBackgroundColor: Colors.black,
       textTheme: const TextTheme(
