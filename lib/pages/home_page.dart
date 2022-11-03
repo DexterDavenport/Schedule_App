@@ -12,12 +12,52 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  CalendarView calendarView = CalendarView.month;
+  CalendarController calendarController = CalendarController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SfCalendar(
-        view: CalendarView.week,
-        dataSource: MeetingDataSource(getAppointments())
+      appBar: AppBar(
+        title: const Text('Calendar'),
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              OutlinedButton(
+                  onPressed: () {
+                    setState(() {
+                      calendarView = CalendarView.month;
+                      calendarController.view = calendarView;
+                    });
+                  },
+                  child: const Text('Month View')),
+              OutlinedButton(
+                  onPressed: () {
+                    setState(() {
+                      calendarView = CalendarView.week;
+                      calendarController.view = calendarView;
+                    });
+                  },
+                  child: const Text('Week View')),
+              OutlinedButton(
+                  onPressed: () {
+                    setState(() {
+                      calendarView = CalendarView.day;
+                      calendarController.view = calendarView;
+                    });
+                  },
+                  child: const Text('Day View')),
+            ],
+          ),
+          Expanded(
+            child: SfCalendar(
+                view: calendarView,
+                controller: calendarController,
+                dataSource: MeetingDataSource(getAppointments())),
+          ),
+        ],
       ),
     );
   }
@@ -34,7 +74,7 @@ List<Appointment> getAppointments() {
       startTime: startTime,
       endTime: endTime,
       subject: "Shower Installation",
-      color: Colors.blue, 
+      color: Colors.blue,
       recurrenceRule: 'FREQ=DAILY;COUNT=10',
       isAllDay: true));
 
