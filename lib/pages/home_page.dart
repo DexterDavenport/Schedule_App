@@ -14,16 +14,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   CalendarView calendarView = CalendarView.month;
   CalendarController calendarController = CalendarController();
-  
+
   get style => null;
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle =
-        ElevatedButton.styleFrom(disabledBackgroundColor: Theme.of(context).colorScheme.primary , disabledForegroundColor: Colors.black54,textStyle: const TextStyle(fontSize: 20));
-
+    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+        disabledBackgroundColor: Theme.of(context).colorScheme.primary,
+        disabledForegroundColor: Colors.black54,
+        textStyle: const TextStyle(fontSize: 20));
+    var icon = const Icon(Icons.account_circle_outlined);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calendar'),
+        title: const Text("Home"),
+        leading: GestureDetector(
+          onTap: () {icon = const Icon(Icons.account_circle);},
+          child: icon,
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -34,15 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               OutlinedButton(
                 style: OutlinedButton.styleFrom(),
-                  onPressed: () {
-                    setState(() {
-                      calendarView = CalendarView.month;
-                      calendarController.view = calendarView;
-                    });
-                  },
-                  child: const Text('Month View'),
-                  ),
-                  
+                onPressed: () {
+                  setState(() {
+                    calendarView = CalendarView.month;
+                    calendarController.view = calendarView;
+                  });
+                },
+                child: const Text('Month view'),
+              ),
               OutlinedButton(
                   onPressed: () {
                     setState(() {
@@ -63,10 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Expanded(
             child: SfCalendar(
-              cellBorderColor: Theme.of(context).backgroundColor, 
-              view: calendarView,
-              controller: calendarController,
-              dataSource: MeetingDataSource(getAppointments())),
+                cellBorderColor: Theme.of(context).backgroundColor,
+                view: calendarView,
+                controller: calendarController,
+                dataSource: MeetingDataSource(getAppointments())),
           ),
           ElevatedButton(
             style: buttonStyle,
@@ -102,6 +107,3 @@ class MeetingDataSource extends CalendarDataSource {
     appointments = source;
   }
 }
-
-
-

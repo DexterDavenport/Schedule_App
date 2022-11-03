@@ -24,7 +24,13 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings Page'),
+        title: const Text("Settings"),
+        leading: GestureDetector(
+          onTap: () { /* Write listener code here */ },
+          child: const Icon(
+            Icons.menu,  // add custom icons also
+          ),
+        ),
       ),
       body: SafeArea(
         minimum: const EdgeInsets.all(8.0),
