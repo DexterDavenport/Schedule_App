@@ -14,13 +14,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   CalendarView calendarView = CalendarView.month;
   CalendarController calendarController = CalendarController();
+  
+  get style => null;
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle buttonStyle =
+        ElevatedButton.styleFrom(disabledBackgroundColor: Colors.lightBlue , disabledForegroundColor: Colors.black54,textStyle: const TextStyle(fontSize: 20));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calendar'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,6 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: calendarController,
                 dataSource: MeetingDataSource(getAppointments())),
           ),
+          ElevatedButton(
+            style: buttonStyle,
+            onPressed: null,
+            child: const Text('+'),
+          ),
         ],
       ),
     );
@@ -86,3 +98,6 @@ class MeetingDataSource extends CalendarDataSource {
     appointments = source;
   }
 }
+
+
+
