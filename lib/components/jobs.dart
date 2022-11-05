@@ -62,8 +62,8 @@ class JobsDay extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           color: Colors.blue,
           border: Border.all(color: Colors.black)),
-      width: 100.0,
-      height: 100.0,
+      width: 90.0,
+      height: 90.0,
       // color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

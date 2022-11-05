@@ -35,41 +35,20 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(),
-                onPressed: () {
-                  setState(() {
-                    calendarView = CalendarView.month;
-                    calendarController.view = calendarView;
-                  });
-                },
-                child: const Text('Month view'),
-              ),
-              OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      calendarView = CalendarView.week;
-                      calendarController.view = calendarView;
-                    });
-                  },
-                  child: const Text('Week View')),
-              OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      calendarView = CalendarView.day;
-                      calendarController.view = calendarView;
-                    });
-                  },
-                  child: const Text('Day View')),
-            ],
-          ),
           Expanded(
             child: SfCalendar(
                 cellBorderColor: Theme.of(context).backgroundColor,
-                view: calendarView,
+                view: CalendarView.day,
+                allowedViews: const [
+                  CalendarView.month,
+                  CalendarView.week,
+                  CalendarView.day,
+                  // CalendarView.timelineDay,
+                  // CalendarView.timelineWeek,
+                  // CalendarView.timelineWorkWeek,
+                  // CalendarView.timelineMonth,
+                  // CalendarView.schedule
+                ],
                 controller: calendarController,
                 dataSource: MeetingDataSource(getAppointments())),
           ),
