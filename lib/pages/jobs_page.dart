@@ -1,29 +1,141 @@
 import 'package:flutter/material.dart';
 
 // ignore: constant_identifier_names
+const List<int> NumList = <int>[1, 2, 3, 4, 5];
+// ignore: constant_identifier_names
 const List<String> Date28 = <String>[
-    'Date', 
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28'];
+  'Date',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '20',
+  '21',
+  '22',
+  '23',
+  '24',
+  '25',
+  '26',
+  '27',
+  '28'
+];
 // ignore: constant_identifier_names
 const List<String> Date29 = <String>[
-    'Date', 
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29'];
+  'Date',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '20',
+  '21',
+  '22',
+  '23',
+  '24',
+  '25',
+  '26',
+  '27',
+  '28',
+  '29'
+];
 // ignore: constant_identifier_names
 const List<String> Date30 = <String>[
-    'Date', 
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'];
+  'Date',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '20',
+  '21',
+  '22',
+  '23',
+  '24',
+  '25',
+  '26',
+  '27',
+  '28',
+  '29',
+  '30'
+];
 // ignore: constant_identifier_names
 const List<String> Date31 = <String>[
-    'Date', 
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+  'Date',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '20',
+  '21',
+  '22',
+  '23',
+  '24',
+  '25',
+  '26',
+  '27',
+  '28',
+  '29',
+  '30',
+  '31'
+];
 
 void main() {
   runApp(const MaterialApp(
@@ -65,25 +177,18 @@ class SecondRoute extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Second Route'),
       ),
-      body: Column(
-        children: [ElevatedButton(
+      body: Column(children: [
+        ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: const Text('Go back!'),
         ),
         const DateButton()
-        ]
-      ),
+      ]),
     );
   }
 }
-
-
-
-
-
-
 
 class DateButton extends StatefulWidget {
   const DateButton({super.key});
@@ -93,11 +198,11 @@ class DateButton extends StatefulWidget {
 }
 
 class _DateButtonState extends State<DateButton> {
-  String dropdownValue = Date31.first;
+  int dropdownValue = 1;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
+    return DropdownButton<int>(
       value: dropdownValue,
       icon: const Icon(Icons.arrow_downward),
       elevation: 16,
@@ -106,19 +211,18 @@ class _DateButtonState extends State<DateButton> {
         height: 2,
         color: Colors.deepPurpleAccent,
       ),
-      onChanged: (String? value) {
+      onChanged: (int? value) {
         // This is called when the user selects an item.
         setState(() {
-            
           dropdownValue = value!;
         });
       },
-      items: Date31.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
+      items: NumList.map<DropdownMenuItem<int>>((int value) {
+        return DropdownMenuItem<int>(
           value: value,
-          child: Text(value),
+          child: Text(value.toString()),
         );
-      }).toList(),
-    );
+      }
+    ).toList());
   }
 }

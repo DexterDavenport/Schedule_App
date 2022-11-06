@@ -3,11 +3,42 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 // ignore: constant_identifier_names
-const List<String> Date31 = <String>[
-    'Date', 
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+const List<int> MonthList = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+// ignore: constant_identifier_names
+const List<int> DayList = <int>[
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31
+];
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -64,16 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
                 controller: calendarController,
                 dataSource: MeetingDataSource(getAppointments())),
-            
           ),
           ElevatedButton(
             style: buttonStyle,
             onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AddEvent()),
-            );
-          },
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddEvent()),
+              );
+            },
             child: const Text('+'),
           ),
         ],
@@ -81,11 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-
-
-
 
 List<Appointment> getAppointments() {
   List<Appointment> meetings = <Appointment>[];
@@ -111,8 +136,11 @@ class MeetingDataSource extends CalendarDataSource {
   }
 }
 
+// ignore: must_be_immutable
 class AddEvent extends StatelessWidget {
-  const AddEvent({super.key});
+  final _textController = TextEditingController();
+  String jobTitle = '';
+  AddEvent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -120,20 +148,51 @@ class AddEvent extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Event'),
       ),
-      body: Column(
-        children: [ElevatedButton(
+      body: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        TextField(
+          controller: _textController,
+          decoration: InputDecoration(
+            hintText: 'Event Title',
+            border: const OutlineInputBorder(),
+            suffixIcon: IconButton(
+                onPressed: () {
+                  _textController.clear();
+                },
+                icon: const Icon(Icons.clear)),
+          ),
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Column(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const Text(
+                      'Month',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    const MonthButton()
+                  ]),
+              Column(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const Text(
+                      'Day',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    const DayButton()
+                  ])
+            ]),
+        ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: const Text('Create'),
         ),
-        const DateButton()
-        ]
-      ),
+      ]),
     );
   }
 }
-
 
 class Account extends StatelessWidget {
   const Account({super.key});
@@ -156,40 +215,74 @@ class Account extends StatelessWidget {
   }
 }
 
-class DateButton extends StatefulWidget {
-  const DateButton({super.key});
+class MonthButton extends StatefulWidget {
+  const MonthButton({super.key});
 
   @override
-  State<DateButton> createState() => _DateButtonState();
+  State<MonthButton> createState() => _MonthButtonState();
 }
 
-class _DateButtonState extends State<DateButton> {
-  String dropdownValue = Date31.first;
+class _MonthButtonState extends State<MonthButton> {
+  int dropdownValue = 1;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String? value) {
-        // This is called when the user selects an item.
-        setState(() {
-            
-          dropdownValue = value!;
-        });
-      },
-      items: Date31.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-    );
+    return DropdownButton<int>(
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        style: const TextStyle(color: Colors.black),
+        underline: Container(
+          height: 2,
+          color: Colors.black45,
+        ),
+        onChanged: (int? value) {
+          // This is called when the user selects an item.
+          setState(() {
+            dropdownValue = value!;
+          });
+        },
+        items: MonthList.map<DropdownMenuItem<int>>((int value) {
+          return DropdownMenuItem<int>(
+            value: value,
+            child: Text(value.toString()),
+          );
+        }).toList());
+  }
+}
+
+class DayButton extends StatefulWidget {
+  const DayButton({super.key});
+
+  @override
+  State<DayButton> createState() => _DayButtonState();
+}
+
+class _DayButtonState extends State<DayButton> {
+  int dropdownValue = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<int>(
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        style: const TextStyle(color: Colors.black),
+        underline: Container(
+          height: 2,
+          color: Colors.black45,
+        ),
+        onChanged: (int? value) {
+          // This is called when the user selects an item.
+          setState(() {
+            dropdownValue = value!;
+          });
+        },
+        items: DayList.map<DropdownMenuItem<int>>((int value) {
+          return DropdownMenuItem<int>(
+            value: value,
+            child: Text(value.toString()),
+          );
+        }).toList());
   }
 }
