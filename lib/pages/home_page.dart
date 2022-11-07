@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scheduler/main.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -112,6 +113,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+
+
+
+
+
+
+
 List<Appointment> getAppointments() {
   List<Appointment> meetings = <Appointment>[];
   final DateTime today = DateTime.now();
@@ -129,6 +137,15 @@ List<Appointment> getAppointments() {
 
   return meetings;
 }
+
+
+
+
+
+
+
+
+
 
 class MeetingDataSource extends CalendarDataSource {
   MeetingDataSource(List<Appointment> source) {
@@ -148,7 +165,9 @@ class AddEvent extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Event'),
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+        children: [
         TextField(
           controller: _textController,
           decoration: InputDecoration(
@@ -203,13 +222,21 @@ class Account extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Account Info'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Return'),
-        ),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+            child: const Text('Sign Out'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Return'),
+          ),
+        ]
       ),
     );
   }
