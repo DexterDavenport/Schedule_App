@@ -113,40 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-
-
-
-
-
-
-List<Appointment> getAppointments() {
-  List<Appointment> meetings = <Appointment>[];
-  final DateTime today = DateTime.now();
-  final DateTime startTime =
-      DateTime(today.year, today.month, today.day, 9, 0, 0);
-  final DateTime endTime = startTime.add(const Duration(hours: 2));
-
-  meetings.add(Appointment(
-      startTime: startTime,
-      endTime: endTime,
-      subject: "Shower Installation",
-      color: Colors.green,
-      recurrenceRule: 'FREQ=DAILY;COUNT=10',
-      isAllDay: true));
-
-  return meetings;
-}
-
-
-
-
-
-
-
-
-
-
 class MeetingDataSource extends CalendarDataSource {
   MeetingDataSource(List<Appointment> source) {
     appointments = source;
@@ -312,4 +278,22 @@ class _DayButtonState extends State<DayButton> {
           );
         }).toList());
   }
+}
+
+List<Appointment> getAppointments() {
+  List<Appointment> meetings = <Appointment>[];
+  final DateTime today = DateTime.now();
+  final DateTime startTime =
+      DateTime(today.year, today.month, today.day, 9, 0, 0);
+  final DateTime endTime = startTime.add(const Duration(hours: 2));
+
+  meetings.add(Appointment(
+      startTime: startTime,
+      endTime: endTime,
+      subject: "Shower Installation",
+      color: Colors.green,
+      recurrenceRule: 'FREQ=DAILY;COUNT=10',
+      isAllDay: true));
+
+  return meetings;
 }
