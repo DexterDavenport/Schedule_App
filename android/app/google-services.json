@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157652711331",
+    "project_id": "login-896bd",
+    "storage_bucket": "login-896bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157652711331:android:ed04b33a7900abdc464c16",
+        "android_client_info": {
+          "package_name": "com.example.perfect_scheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157652711331-9et5tuku07h510qqll2jfpkihhdmsqsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMf8Kh9P1Mzf0BshMWvowj1K1iTTdYKLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157652711331-9et5tuku07h510qqll2jfpkihhdmsqsv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
