@@ -5,6 +5,12 @@ import 'package:scheduler/contexts/themes.dart';
 import 'package:scheduler/pages/settings_page.dart';
 import 'components/navbar.dart';
 
+
+// https://www.youtube.com/watch?v=rWamixHIKmQ
+
+
+
+
 void main() => runApp(const MyApp());
 
 class EnterApp extends StatefulWidget {
