@@ -110,6 +110,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_firebase_auth",
+      "rootUri": "file:///usr/local/Caskroom/flutter/3.0.0/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_firebase_auth-0.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///usr/local/Caskroom/flutter/3.0.0/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1",
       "packageUri": "lib/",
@@ -284,7 +290,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-11-22T23:31:13.304013Z",
+  "generated": "2022-11-23T01:42:02.928643Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

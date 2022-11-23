@@ -4,11 +4,15 @@ import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/contexts/themes.dart';
 import 'package:scheduler/pages/settings_page.dart';
 import 'components/navbar.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
 
-
-
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
+}
 
 class EnterApp extends StatefulWidget {
   const EnterApp({Key? key}) : super(key: key);
@@ -69,7 +73,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const MyStatefulWidget(),
+        body: MyStatefulWidget(),
       ),
       debugShowCheckedModeBanner: false,
     );
@@ -77,32 +81,31 @@ class MyApp extends StatelessWidget {
 }
 
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  get user => _auth.currentUser;
+
+  MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  // String? email;
+  // String? password;
 
   @override
   Widget build(BuildContext context) {
+    // User? user = FirebaseAuth.instance.currentUser;
     return WillPopScope(
         onWillPop: () async => false,
         child: ListView(
           children: <Widget>[
             Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                // child: const Text(
-                //   'TutorialKart',
-                //   style: TextStyle(
-                //       color: Colors.blue,
-                //       fontWeight: FontWeight.w500,
-                //       fontSize: 30),
-                // )
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
             ),
             Container(
                 alignment: Alignment.center,
@@ -114,7 +117,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: nameController,
+                controller: email,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'User Name',
@@ -125,7 +128,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: TextField(
                 obscureText: true,
-                controller: passwordController,
+                controller: password,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Password',
@@ -145,20 +148,26 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   child: const Text('Login'),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EnterApp()));
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: email.text, password: password.text);
+                    // ignore: use_build_context_synchronously
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const EnterApp()));
                   },
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text('Does not have account?'),
+                const Text('Don\'t have account?'),
                 TextButton(
                   child: const Text(
                     'Sign in',
                     style: TextStyle(fontSize: 20),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: email.text, password: password.text);
                   },
                 )
               ],
@@ -167,3 +176,5 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ));
   }
 }
+
+

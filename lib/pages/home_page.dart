@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:scheduler/main.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -131,9 +132,7 @@ class AddEvent extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Event'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-        children: [
+      body: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         TextField(
           controller: _textController,
           decoration: InputDecoration(
@@ -188,22 +187,22 @@ class Account extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Account Info'),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyApp()));
-            },
-            child: const Text('Sign Out'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text('Return'),
-          ),
-        ]
-      ),
+      body: Column(children: [
+        ElevatedButton(
+          onPressed: () async {
+            await FirebaseAuth.instance.signOut();
+            // ignore: use_build_context_synchronously
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyApp()));
+          },
+          child: const Text('Sign Out'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Return'),
+        ),
+      ]),
     );
   }
 }
