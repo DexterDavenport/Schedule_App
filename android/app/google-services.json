@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "625932939860",
+    "project_id": "perfectscheduler-37187",
+    "storage_bucket": "perfectscheduler-37187.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625932939860:android:e1775f3ae0fc5fbd70f3c1",
+        "android_client_info": {
+          "package_name": "com.example.perfect_scheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625932939860-vllm97to5hn7d8uouul9e5ee06bdctsg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu1OdW2QXtcl1x9Pt0hyYq8Xo9F_EIRzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625932939860-vllm97to5hn7d8uouul9e5ee06bdctsg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "625932939860-vb4ja9lde8kkttr1j9ojo9f2hv4tokeo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.perfectScheduler"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

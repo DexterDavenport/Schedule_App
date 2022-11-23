@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">625932939860-vllm97to5hn7d8uouul9e5ee06bdctsg.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">625932939860</string>
+    <string name="google_api_key" translatable="false">AIzaSyBu1OdW2QXtcl1x9Pt0hyYq8Xo9F_EIRzs</string>
+    <string name="google_app_id" translatable="false">1:625932939860:android:e1775f3ae0fc5fbd70f3c1</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBu1OdW2QXtcl1x9Pt0hyYq8Xo9F_EIRzs</string>
+    <string name="google_storage_bucket" translatable="false">perfectscheduler-37187.appspot.com</string>
+    <string name="project_id" translatable="false">perfectscheduler-37187</string>
+</resources>
