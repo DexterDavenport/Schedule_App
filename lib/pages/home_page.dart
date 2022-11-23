@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:scheduler/main.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // ignore: constant_identifier_names
 const List<int> MonthList = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -82,18 +82,12 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Expanded(
             child: SfCalendar(
-                // todayHighlightColor: Colors.blueGrey,
                 cellBorderColor: Theme.of(context).backgroundColor,
                 view: CalendarView.month,
                 allowedViews: const [
                   CalendarView.month,
                   CalendarView.week,
                   CalendarView.day,
-                  // CalendarView.timelineDay,
-                  // CalendarView.timelineWeek,
-                  // CalendarView.timelineWorkWeek,
-                  // CalendarView.timelineMonth,
-                  // CalendarView.schedule
                 ],
                 controller: calendarController,
                 dataSource: MeetingDataSource(getAppointments())),
@@ -192,7 +186,8 @@ class Account extends StatelessWidget {
           onPressed: () async {
             await FirebaseAuth.instance.signOut();
             // ignore: use_build_context_synchronously
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyApp()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => const MyApp()));
           },
           child: const Text('Sign Out'),
         ),
@@ -281,18 +276,17 @@ class _DayButtonState extends State<DayButton> {
 
 List<Appointment> getAppointments() {
   List<Appointment> meetings = <Appointment>[];
-  final DateTime today = DateTime.now();
-  final DateTime startTime =
-      DateTime(today.year, today.month, today.day, 9, 0, 0);
+  // final DateTime today = DateTime.now();
+  final DateTime startTime = 
+      DateTime(2022, 11, 14, 9, 0, 0);
   final DateTime endTime = startTime.add(const Duration(hours: 2));
 
   meetings.add(Appointment(
       startTime: startTime,
       endTime: endTime,
-      subject: "Shower Installation",
-      color: Colors.green,
-      recurrenceRule: 'FREQ=DAILY;COUNT=10',
-      isAllDay: true));
+      subject: "Shower Install",
+      color: Colors.lightBlue,
+      ));
 
   return meetings;
 }
