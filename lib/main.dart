@@ -3,9 +3,9 @@ import 'package:scheduler/pages/home_page.dart';
 import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/contexts/themes.dart';
 import 'package:scheduler/pages/settings_page.dart';
-import 'components/navbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'components/navbar.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
