@@ -4,10 +4,7 @@ import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/contexts/themes.dart';
 import 'package:scheduler/pages/settings_page.dart';
 import 'components/navbar.dart';
-
-
-// https://www.youtube.com/watch?v=rWamixHIKmQ
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
