@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:scheduler/pages/create_event_page.dart';
+import 'package:scheduler/pages/event_editing_page.dart';
 import 'account_info_page.dart';
 import 'contexts/globals.dart' as globals;
 
@@ -19,10 +19,6 @@ class _MyHomePageState extends State<MyHomePage> {
   get style => null;
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-        disabledBackgroundColor: Theme.of(context).colorScheme.primary,
-        disabledForegroundColor: Colors.black54,
-        textStyle: const TextStyle(fontSize: 20));
     var icon = const Icon(Icons.account_circle_outlined);
     return Scaffold(
       appBar: AppBar(
@@ -53,13 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: calendarController,
                 dataSource: globals.getAppointments()),
           ),
-          ElevatedButton(
-            style: buttonStyle,
+          FloatingActionButton(
+            // style: buttonStyle,
             // Within the `FirstRoute` widget
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const JobsDay()),
+                MaterialPageRoute(builder: (context) => const EventEditingPage()),
               );
             },
             child: const Text('+'),
@@ -72,77 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-class MonthButton extends StatefulWidget {
-  const MonthButton({super.key});
 
-  @override
-  State<MonthButton> createState() => _MonthButtonState();
-}
-
-class _MonthButtonState extends State<MonthButton> {
-  int dropdownValue = 1;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<int>(
-        value: dropdownValue,
-        icon: const Icon(Icons.arrow_downward),
-        elevation: 16,
-        style: const TextStyle(color: Colors.black),
-        underline: Container(
-          height: 2,
-          color: Colors.black45,
-        ),
-        onChanged: (int? value) {
-          // This is called when the user selects an item.
-          setState(() {
-            dropdownValue = value!;
-          });
-        },
-        items: MonthList.map<DropdownMenuItem<int>>((int value) {
-          return DropdownMenuItem<int>(
-            value: value,
-            child: Text(value.toString()),
-          );
-        }).toList());
-  }
-}
-
-class DayButton extends StatefulWidget {
-  const DayButton({super.key});
-
-  @override
-  State<DayButton> createState() => _DayButtonState();
-}
-
-class _DayButtonState extends State<DayButton> {
-  int dropdownValue = 1;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<int>(
-        value: dropdownValue,
-        icon: const Icon(Icons.arrow_downward),
-        elevation: 16,
-        style: const TextStyle(color: Colors.black),
-        underline: Container(
-          height: 2,
-          color: Colors.black45,
-        ),
-        onChanged: (int? value) {
-          // This is called when the user selects an item.
-          setState(() {
-            dropdownValue = value!;
-          });
-        },
-        items: DayList.map<DropdownMenuItem<int>>((int value) {
-          return DropdownMenuItem<int>(
-            value: value,
-            child: Text(value.toString()),
-          );
-        }).toList());
-  }
-}
 
 class MeetingDataSource extends CalendarDataSource {
   MeetingDataSource(List<Appointment> source) {
