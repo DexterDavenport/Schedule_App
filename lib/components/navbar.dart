@@ -60,11 +60,11 @@ class _NavbarState extends State<Navbar> {
             //   activeIcon: Icon(Icons.calendar_month),
             //   label: 'Calendar',
             // ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_task_outlined),
-              activeIcon: Icon(Icons.add_task),
-              label: 'Jobs',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.add_task_outlined),
+            //   activeIcon: Icon(Icons.add_task),
+            //   label: 'Jobs',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               activeIcon: Icon(Icons.settings),

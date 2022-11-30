@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../contexts/themes.dart';
+import 'contexts/themes.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -25,12 +25,12 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Settings"),
-        leading: GestureDetector(
-          onTap: () { /* Write listener code here */ },
-          child: const Icon(
-            Icons.menu,  // add custom icons also
-          ),
-        ),
+        // leading: GestureDetector(
+        //   onTap: () { /* Write listener code here */ },
+        //   child: const Icon(
+        //     Icons.menu,  // add custom icons also
+        //   ),
+        // ),
       ),
       body: SafeArea(
         minimum: const EdgeInsets.all(8.0),

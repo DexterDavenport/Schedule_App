@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:scheduler/pages/create_account_page.dart';
+import 'package:scheduler/pages/forgot_password_page.dart';
 import 'package:scheduler/pages/home_page.dart';
-import 'package:scheduler/pages/jobs_page.dart';
-import 'package:scheduler/contexts/themes.dart';
+// import 'package:scheduler/pages/jobs_page.dart';
+import 'package:scheduler/pages/contexts/themes.dart';
 import 'package:scheduler/pages/settings_page.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'components/navbar.dart';
-import 'firebase_options.dart';
+import 'pages/contexts/firebase_options.dart';
+import 'pages/contexts/globals.dart' as globals;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +40,7 @@ class _EnterAppState extends State<EnterApp> {
   static List<Widget> pages = [
     const MyHomePage(title: 'Home Page'),
     // const CalendarPage(),
-    const JobsPage(),
+    // const JobsPage(),
     const SettingsPage(),
   ];
 
@@ -137,7 +141,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             TextButton(
               onPressed: () {
-                //forgot password screen
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ForgotPassword()));
               },
               child: const Text(
                 'Forgot Password',
@@ -151,6 +156,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   onPressed: () async {
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: email.text, password: password.text);
+                    globals.userEmail = email.text;
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const EnterApp()));
@@ -165,9 +171,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     'Create Account',
                     style: TextStyle(fontSize: 20),
                   ),
-                  onPressed: () async {
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                        email: email.text, password: password.text);
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CreateAccount()),
+                    );
                   },
                 )
               ],

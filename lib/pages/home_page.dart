@@ -1,46 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:scheduler/main.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-// ignore: constant_identifier_names
-const List<int> MonthList = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-// ignore: constant_identifier_names
-const List<int> DayList = <int>[
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22,
-  23,
-  24,
-  25,
-  26,
-  27,
-  28,
-  29,
-  30,
-  31
-];
+import 'package:scheduler/pages/create_event_page.dart';
+import 'account_info_page.dart';
+import 'contexts/globals.dart' as globals;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -54,7 +16,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   CalendarView calendarView = CalendarView.month;
   CalendarController calendarController = CalendarController();
-
   get style => null;
   @override
   Widget build(BuildContext context) {
@@ -68,10 +29,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("Home"),
         leading: GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Account()),
-            );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AccountInfo()),
+              );
           },
           child: icon,
         ),
@@ -90,14 +51,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   CalendarView.day,
                 ],
                 controller: calendarController,
-                dataSource: MeetingDataSource(getAppointments())),
+                dataSource: globals.getAppointments()),
           ),
           ElevatedButton(
             style: buttonStyle,
+            // Within the `FirstRoute` widget
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AddEvent()),
+                MaterialPageRoute(builder: (context) => const JobsDay()),
               );
             },
             child: const Text('+'),
@@ -108,99 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class MeetingDataSource extends CalendarDataSource {
-  MeetingDataSource(List<Appointment> source) {
-    appointments = source;
-  }
-}
 
-// ignore: must_be_immutable
-class AddEvent extends StatelessWidget {
-  final _textController = TextEditingController();
-  String jobTitle = '';
-  AddEvent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add Event'),
-      ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        TextField(
-          controller: _textController,
-          decoration: InputDecoration(
-            hintText: 'Event Title',
-            border: const OutlineInputBorder(),
-            suffixIcon: IconButton(
-                onPressed: () {
-                  _textController.clear();
-                },
-                icon: const Icon(Icons.clear)),
-          ),
-        ),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              Column(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    const Text(
-                      'Month',
-                      style: TextStyle(fontSize: 25),
-                    ),
-                    const MonthButton()
-                  ]),
-              Column(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    const Text(
-                      'Day',
-                      style: TextStyle(fontSize: 25),
-                    ),
-                    const DayButton()
-                  ])
-            ]),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Create'),
-        ),
-      ]),
-    );
-  }
-}
-
-class Account extends StatelessWidget {
-  const Account({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Account Info'),
-      ),
-      body: Column(children: [
-        ElevatedButton(
-          onPressed: () async {
-            await FirebaseAuth.instance.signOut();
-            // ignore: use_build_context_synchronously
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => const MyApp()));
-          },
-          child: const Text('Sign Out'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Return'),
-        ),
-      ]),
-    );
-  }
-}
 
 class MonthButton extends StatefulWidget {
   const MonthButton({super.key});
@@ -274,19 +144,9 @@ class _DayButtonState extends State<DayButton> {
   }
 }
 
-List<Appointment> getAppointments() {
-  List<Appointment> meetings = <Appointment>[];
-  // final DateTime today = DateTime.now();
-  final DateTime startTime = 
-      DateTime(2022, 11, 14, 9, 0, 0);
-  final DateTime endTime = startTime.add(const Duration(hours: 2));
-
-  meetings.add(Appointment(
-      startTime: startTime,
-      endTime: endTime,
-      subject: "Shower Install",
-      color: Colors.lightBlue,
-      ));
-
-  return meetings;
+class MeetingDataSource extends CalendarDataSource {
+  MeetingDataSource(List<Appointment> source) {
+    appointments = source;
+  }
 }
+
