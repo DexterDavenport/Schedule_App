@@ -4,6 +4,7 @@ import 'package:scheduler/pages/forgot_password_page.dart';
 import 'package:scheduler/pages/home_page.dart';
 // import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/pages/contexts/themes.dart';
+import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/pages/settings_page.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
@@ -42,7 +43,7 @@ class _EnterAppState extends State<EnterApp> {
   static List<Widget> pages = [
     const MyHomePage(title: 'Home Page'),
     // const CalendarPage(),
-    // const JobsPage(),
+    const JobsPage(title: 'Jobs Page',),
     const SettingsPage(),
   ];
 

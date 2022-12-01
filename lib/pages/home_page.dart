@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   CalendarView.month,
                   CalendarView.week,
                   CalendarView.day,
+                  // CalendarView.schedule
                 ],
                 controller: calendarController,
                 dataSource: EventDataSource(events),
