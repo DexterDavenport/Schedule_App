@@ -8,8 +8,10 @@ import 'package:scheduler/pages/settings_page.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:scheduler/provider/event_provider.dart';
 import 'components/navbar.dart';
 import 'pages/contexts/firebase_options.dart';
+ import 'package:provider/provider.dart'; 
 import 'pages/contexts/globals.dart' as globals;
 
 Future<void> main() async {
@@ -72,17 +74,19 @@ class MyApp extends StatelessWidget {
   static const String _title = 'Perfect Scheduler';
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => EventProvider(),
+    child: MaterialApp(
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
         body: MyStatefulWidget(),
       ),
       debugShowCheckedModeBanner: false,
+      )
     );
   }
-}
+
 
 class MyStatefulWidget extends StatefulWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;

@@ -1,6 +1,9 @@
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:scheduler/pages/contexts/event.dart';
 import 'package:flutter/material.dart';
+
+import '../provider/event_provider.dart';
 
 String tillDate(DateTime dateTime) {
   final date = DateFormat.yMMMEd().format(dateTime);
@@ -75,7 +78,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
-          onPressed: () {},
+          onPressed: saveForm,
           icon: const Icon(Icons.done),
           label: const Text('Save'),
         ),
@@ -87,7 +90,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           border: UnderlineInputBorder(),
           hintText: 'Add Title',
         ),
-        onFieldSubmitted: (_) {},
+        onFieldSubmitted: (_) => saveForm(),
         validator: (title) =>
             title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: titleController,
@@ -127,13 +130,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
             flex: 2,
             child: buildDropdownField(
               text: tillDate(toDate),
-              onClicked: () {},
+              onClicked: () => pickToDateTime(pickDate: true),
             ),
           ),
           Expanded(
               child: buildDropdownField(
             text: tillTime(toDate),
-            onClicked: () {},
+            onClicked: () => pickToDateTime(pickDate: false),
           ))
         ],
       ));
@@ -143,10 +146,22 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (date == null) return;
 
     if (date.isAfter(toDate)) {
-      toDate = DateTime(date.year, date.month, date.day);
+      toDate =
+          DateTime(date.year, date.month, date.day, toDate.hour, toDate.minute);
     }
 
     setState(() => fromDate = date);
+  }
+
+  Future pickToDateTime({required bool pickDate}) async {
+    final date = await pickDateTime(
+      toDate,
+      pickDate: pickDate,
+      firstDate: pickDate ? fromDate : null,
+    );
+    if (date == null) return;
+
+    setState(() => toDate = date);
   }
 
   Future<DateTime?> pickDateTime(
@@ -206,6 +221,24 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child,
         ],
       );
+
+  Future saveForm() async {
+    final isValid = _formKey.currentState!.validate();
+
+    if (isValid) {
+      final event = Event(
+        title: titleController.text,
+        description: 'Description',
+        from: fromDate,
+        to: toDate,
+      );
+
+      final provider = Provider.of<EventProvider>(context, listen: false);
+      provider.addEvent(event);
+
+      Navigator.of(context).pop();
+    }
+  }
 }
 
 

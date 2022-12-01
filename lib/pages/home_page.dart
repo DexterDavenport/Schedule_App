@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scheduler/provider/event_provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:scheduler/pages/event_editing_page.dart';
 import 'account_info_page.dart';
+import 'contexts/event_data_source.dart';
+// ignore: unused_import
 import 'contexts/globals.dart' as globals;
 
 class MyHomePage extends StatefulWidget {
@@ -19,16 +23,17 @@ class _MyHomePageState extends State<MyHomePage> {
   get style => null;
   @override
   Widget build(BuildContext context) {
+    final events = Provider.of<EventProvider>(context).events;
     var icon = const Icon(Icons.account_circle_outlined);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
         leading: GestureDetector(
           onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AccountInfo()),
-              );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AccountInfo()),
+            );
           },
           child: icon,
         ),
@@ -47,15 +52,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   CalendarView.day,
                 ],
                 controller: calendarController,
-                dataSource: globals.getAppointments()),
-          ),
+                dataSource: EventDataSource(events),
+          )),
           FloatingActionButton(
             // style: buttonStyle,
             // Within the `FirstRoute` widget
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const EventEditingPage()),
+                MaterialPageRoute(
+                    builder: (context) => const EventEditingPage()),
               );
             },
             child: const Text('+'),
@@ -66,13 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-
-
-
 class MeetingDataSource extends CalendarDataSource {
   MeetingDataSource(List<Appointment> source) {
     appointments = source;
   }
 }
-
