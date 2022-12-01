@@ -32,6 +32,7 @@ class EventEditingPage extends StatefulWidget {
 class _EventEditingPageState extends State<EventEditingPage> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
   late DateTime fromDate;
   late DateTime toDate;
 
@@ -228,7 +229,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (isValid) {
       final event = Event(
         title: titleController.text,
-        description: 'Description',
+        description: 'This is the description ',
         from: fromDate,
         to: toDate,
       );

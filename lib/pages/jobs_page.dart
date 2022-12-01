@@ -43,12 +43,11 @@ class _JobsPageState extends State<JobsPage> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
-            child: SfCalendar(
-                cellBorderColor: Theme.of(context).backgroundColor,
-                view: CalendarView.schedule,
-
-                controller: calendarController,
-                dataSource: EventDataSource(events),
+              child: SfCalendar(
+            cellBorderColor: Theme.of(context).backgroundColor,
+            view: CalendarView.schedule,
+            controller: calendarController,
+            dataSource: EventDataSource(events),
           )),
           FloatingActionButton(
             // style: buttonStyle,
