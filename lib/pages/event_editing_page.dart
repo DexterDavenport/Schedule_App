@@ -139,6 +139,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ));
 
   Future pickFromDateTime({required bool pickDate}) async {
+    final date = await pickDateTime(fromDate, pickDate: pickDate);
+    if (date == null) return;
+
+    if (date.isAfter(toDate)) {
+      toDate = DateTime(date.year, date.month, date.day);
+    }
+
+    setState(() => fromDate = date);
   }
 
   Future<DateTime?> pickDateTime(
@@ -160,8 +168,18 @@ class _EventEditingPageState extends State<EventEditingPage> {
           Duration(hours: initialDate.hour, minutes: initialDate.minute);
 
       return date.add(time);
+    } else {
+      final timeOfDay = await showTimePicker(
+          context: context, initialTime: TimeOfDay.fromDateTime(initialDate));
+
+      if (timeOfDay == null) return null;
+
+      final date =
+          DateTime(initialDate.year, initialDate.month, initialDate.month);
+      final time = Duration(hours: timeOfDay.hour, minutes: timeOfDay.minute);
+
+      return date.add(time);
     }
-    return null;
   }
 
   Widget buildDropdownField({
@@ -189,3 +207,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 }
+
+
+
+
+// https://www.youtube.com/watch?v=LoDtxRkGDTw
