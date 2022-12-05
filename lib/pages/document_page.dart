@@ -1,7 +1,8 @@
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter/material.dart';
-import 'package:scheduler/pages/home_page.dart';
 
+// ignore: unused_import
+import '../main.dart';
 // ignore: unused_import
 import 'contexts/globals.dart' as globals;
 
@@ -35,11 +36,9 @@ class _DocumentPageState extends State<DocumentPage> {
             // style: buttonStyle,
             // Within the `FirstRoute` widget
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MyHomePage(title: 'Home',)),
-              );
+              Navigator.pop(context);
+              // Navigator.of(context).push(MaterialPageRoute(
+              //           builder: (context) => const EnterApp()));
             },
             child: const Icon(Icons.add_box),
           ),],

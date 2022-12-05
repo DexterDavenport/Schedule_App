@@ -74,6 +74,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             // style: buttonStyle,
             // Within the `FirstRoute` widget
             onPressed: () {
+              saveForm;
               Navigator.push(
                 context,
                 MaterialPageRoute(
