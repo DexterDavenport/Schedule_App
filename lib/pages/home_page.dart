@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scheduler/provider/event_provider.dart';
@@ -20,7 +21,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   CalendarView calendarView = CalendarView.month;
   CalendarController calendarController = CalendarController();
-  get style => null;
+  final docUser =
+      FirebaseFirestore.instance.collection(globals.userEmail).doc();
+
   @override
   Widget build(BuildContext context) {
     final events = Provider.of<EventProvider>(context).events;
@@ -43,17 +46,17 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
-            child: SfCalendar(
-                cellBorderColor: Theme.of(context).backgroundColor,
-                view: CalendarView.month,
-                allowedViews: const [
-                  CalendarView.month,
-                  CalendarView.week,
-                  CalendarView.day,
-                  // CalendarView.schedule
-                ],
-                controller: calendarController,
-                dataSource: EventDataSource(events),
+              child: SfCalendar(
+            cellBorderColor: Theme.of(context).backgroundColor,
+            view: CalendarView.month,
+            allowedViews: const [
+              CalendarView.month,
+              CalendarView.week,
+              CalendarView.day,
+              // CalendarView.schedule
+            ],
+            controller: calendarController,
+            dataSource: EventDataSource(events),
           )),
           FloatingActionButton(
             // style: buttonStyle,

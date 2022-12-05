@@ -252,6 +252,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
       createCloudEvent(title: titleController.text, from: fromDate, to: toDate);
 
       final provider = Provider.of<EventProvider>(context, listen: false);
+
+      
       provider.addEvent(event);
       Navigator.of(context).pop();
     }
