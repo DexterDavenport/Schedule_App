@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scheduler/provider/event_provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:scheduler/pages/event_editing_page.dart';
+import 'package:scheduler/pages/create_event_page.dart';
 import 'account_info_page.dart';
 import 'contexts/event_data_source.dart';
 // ignore: unused_import

@@ -43,6 +43,7 @@ dependencies:
   cloud_firestore: ^4.1.0 # https://www.youtube.com/watch?v=ErP_xomHKTw
   flutter_firebase_auth: ^0.0.1
   provider: ^6.0.4
+  flutter_quill: ^6.1.6
 
 dev_dependencies:
   flutter_test:
