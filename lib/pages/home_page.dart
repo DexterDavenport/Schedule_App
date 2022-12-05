@@ -6,7 +6,7 @@ import 'package:scheduler/pages/event/create_event_page.dart';
 import 'account_info_page.dart';
 import 'contexts/event_data_source.dart';
 // ignore: unused_import
-import 'contexts/globals.dart' as globals;
+import 'components/globals.dart' as globals;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

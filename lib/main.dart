@@ -10,10 +10,10 @@ import 'package:scheduler/pages/settings_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:scheduler/provider/event_provider.dart';
-import 'components/navbar.dart';
+import 'pages/components/navbar.dart';
 import 'pages/contexts/firebase_options.dart';
  import 'package:provider/provider.dart'; 
-import 'pages/contexts/globals.dart' as globals;
+import 'pages/components/globals.dart' as globals;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

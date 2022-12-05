@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import '../../main.dart';
 // ignore: unused_import
-import '../contexts/globals.dart' as globals;
+import '../components/globals.dart' as globals;
 
 class DocumentPage extends StatefulWidget {
   const DocumentPage({super.key});
@@ -27,21 +27,20 @@ class _DocumentPageState extends State<DocumentPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(0.0),
-            child: QuillToolbar.basic(controller: _controller), 
+            child: QuillToolbar.basic(controller: _controller),
           ),
-          Expanded(child: 
-          QuillEditor.basic(controller: _controller, readOnly: false)),
-
+          Expanded(
+              child:
+                  QuillEditor.basic(controller: _controller, readOnly: false)),
           FloatingActionButton(
             // style: buttonStyle,
             // Within the `FirstRoute` widget
             onPressed: () {
               Navigator.pop(context);
-              // Navigator.of(context).push(MaterialPageRoute(
-              //           builder: (context) => const EnterApp()));
             },
             child: const Icon(Icons.add_box),
-          ),],
+          ),
+        ],
       ),
     ));
   }

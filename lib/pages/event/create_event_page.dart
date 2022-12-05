@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:scheduler/pages/contexts/event.dart';
 import 'package:flutter/material.dart';
 import 'package:scheduler/pages/event/document_page.dart';
-
+import '../components/globals.dart' as globals;
 import '../../provider/event_provider.dart';
 
 String tillDate(DateTime dateTime) {
@@ -71,18 +72,18 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 const SizedBox(height: 12),
                 buildDateTimePickers(),
                 TextButton(
-            // style: buttonStyle,
-            // Within the `FirstRoute` widget
-            onPressed: () {
-              saveForm;
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const DocumentPage()),
-              );
-            },
-            child: const Text('Add Document'),
-          ),
+                  // style: buttonStyle,
+                  // Within the `FirstRoute` widget
+                  onPressed: () {
+                    saveForm;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DocumentPage()),
+                    );
+                  },
+                  child: const Text('Add Document'),
+                ),
               ],
             ),
           )));
@@ -243,20 +244,38 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (isValid) {
       final event = Event(
         title: titleController.text,
-        description: 'This is the description ',
+        // description: 'This is the description ',
         from: fromDate,
         to: toDate,
       );
 
+      createCloudEvent(title: titleController.text, from: fromDate, to: toDate);
+
       final provider = Provider.of<EventProvider>(context, listen: false);
       provider.addEvent(event);
-
       Navigator.of(context).pop();
     }
   }
+
+  Future createCloudEvent(
+      {required String title,
+      required DateTime from,
+      required DateTime to}) async {
+    final docUser =
+        FirebaseFirestore.instance.collection(globals.userEmail).doc();
+
+    final json = {
+      'subject': title,
+      'startTime': from,
+      'endTime': to,
+    };
+
+    await docUser.set(json);
+  }
+
+  Stream<List<Event>> readUsers() => FirebaseFirestore.instance
+      .collection(globals.userEmail)
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => Event.fromJson(doc.data())).toList());
 }
-
-
-
-
-// https://www.youtube.com/watch?v=LoDtxRkGDTw
