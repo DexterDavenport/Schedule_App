@@ -2,9 +2,9 @@ import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter/material.dart';
 
 // ignore: unused_import
-import '../main.dart';
+import '../../main.dart';
 // ignore: unused_import
-import 'contexts/globals.dart' as globals;
+import '../contexts/globals.dart' as globals;
 
 class DocumentPage extends StatefulWidget {
   const DocumentPage({super.key});

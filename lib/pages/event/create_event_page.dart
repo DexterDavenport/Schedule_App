@@ -2,9 +2,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:scheduler/pages/contexts/event.dart';
 import 'package:flutter/material.dart';
-import 'package:scheduler/pages/document_page.dart';
+import 'package:scheduler/pages/event/document_page.dart';
 
-import '../provider/event_provider.dart';
+import '../../provider/event_provider.dart';
 
 String tillDate(DateTime dateTime) {
   final date = DateFormat.yMMMEd().format(dateTime);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scheduler/pages/create_account_page.dart';
-import 'package:scheduler/pages/forgot_password_page.dart';
+import 'package:scheduler/pages/login/create_account_page.dart';
+import 'package:scheduler/pages/login/forgot_password_page.dart';
 import 'package:scheduler/pages/home_page.dart';
 // import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/pages/contexts/themes.dart';
