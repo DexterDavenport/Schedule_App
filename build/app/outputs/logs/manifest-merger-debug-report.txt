@@ -7,6 +7,8 @@ MERGED from [:cloud_firestore] /Users/dexterdavenport/Desktop/Senior Project/Sch
 MERGED from [:cloud_firestore] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-14:19
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] /Users/dexterdavenport/.gradle/caches/transforms-3/e96b39fbdb8724ecd5752340be2c856e/transformed/jetified-firebase-analytics-21.2.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] /Users/dexterdavenport/.gradle/caches/transforms-3/e96b39fbdb8724ecd5752340be2c856e/transformed/jetified-firebase-analytics-21.2.0/AndroidManifest.xml:7:5-20
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/dexterdavenport/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
@@ -64,6 +66,9 @@ MERGED from /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/android/a
 MERGED from [:firebase_auth] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:cloud_firestore] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:flutter_keyboard_visibility] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/flutter_keyboard_visibility/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-16:12
+MERGED from [:device_info_plus] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/device_info_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.1] /Users/dexterdavenport/.gradle/caches/transforms-3/2a2bab6dfddf4d0fc63f631a95388563/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] /Users/dexterdavenport/.gradle/caches/transforms-3/e96b39fbdb8724ecd5752340be2c856e/transformed/jetified-firebase-analytics-21.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/dexterdavenport/.gradle/caches/transforms-3/21b26ef90e71324700151bde7e8603b7/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
@@ -141,6 +146,12 @@ MERGED from [:cloud_firestore] /Users/dexterdavenport/Desktop/Senior Project/Sch
 MERGED from [:cloud_firestore] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_keyboard_visibility] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/flutter_keyboard_visibility/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_keyboard_visibility] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/flutter_keyboard_visibility/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:device_info_plus] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/device_info_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:device_info_plus] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/device_info_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.multidex:multidex:2.0.1] /Users/dexterdavenport/.gradle/caches/transforms-3/2a2bab6dfddf4d0fc63f631a95388563/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] /Users/dexterdavenport/.gradle/caches/transforms-3/2a2bab6dfddf4d0fc63f631a95388563/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] /Users/dexterdavenport/.gradle/caches/transforms-3/e96b39fbdb8724ecd5752340be2c856e/transformed/jetified-firebase-analytics-21.2.0/AndroidManifest.xml:5:5-44
@@ -309,6 +320,14 @@ ADDED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedu
 		ADDED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 	android:name
 		ADDED from [:firebase_core] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/dexterdavenport/Desktop/Senior Project/Schedule_App/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] /Users/dexterdavenport/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 	android:required
