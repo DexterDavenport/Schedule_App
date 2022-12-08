@@ -12,11 +12,14 @@ class Event {
     // this.description,
     required this.from,
     required this.to,
-    this.bacgroudColor = Colors.lightGreen,
+    this.bacgroudColor = Colors.lightGreen, 
+    required description,
   });
 
   static Event fromJson(Map<String, dynamic> json) => Event(
       from: (json['startTime'] as DateTime),
       to: (json['endTime'] as DateTime),
-      title: json['subject'],);
+      title: json['subject'],
+      description: json['description']);
+      
 }

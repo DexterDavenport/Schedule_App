@@ -13,7 +13,8 @@ class DocumentPage extends StatefulWidget {
   State<DocumentPage> createState() => _DocumentPageState();
 }
 
-QuillController _controller = QuillController.basic();
+QuillController descriptionController = QuillController.basic();
+String description = descriptionController.document.toPlainText();
 
 class _DocumentPageState extends State<DocumentPage> {
   @override
@@ -27,16 +28,17 @@ class _DocumentPageState extends State<DocumentPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(0.0),
-            child: QuillToolbar.basic(controller: _controller),
+            child: QuillToolbar.basic(controller: descriptionController),
           ),
           Expanded(
-              child:
-                  QuillEditor.basic(controller: _controller, readOnly: false)),
+              child: QuillEditor.basic(
+                  controller: descriptionController, readOnly: false)),
           FloatingActionButton(
-            // style: buttonStyle,
-            // Within the `FirstRoute` widget
+
             onPressed: () {
-              Navigator.pop(context);
+              description = descriptionController.document.toPlainText();
+              Navigator.pop(context, description);
+              description = descriptionController.document.toPlainText();
             },
             child: const Icon(Icons.add_box),
           ),

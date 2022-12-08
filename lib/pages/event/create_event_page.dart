@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:scheduler/pages/event/document_page.dart';
 import '../components/globals.dart' as globals;
 import '../../provider/event_provider.dart';
+import 'document_page.dart' as doc;
 
 String tillDate(DateTime dateTime) {
   final date = DateFormat.yMMMEd().format(dateTime);
@@ -34,7 +35,6 @@ class EventEditingPage extends StatefulWidget {
 class _EventEditingPageState extends State<EventEditingPage> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
-  final descriptionController = TextEditingController();
   late DateTime fromDate;
   late DateTime toDate;
 
@@ -51,7 +51,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   @override
   void dispose() {
     titleController.dispose();
-
+    doc.descriptionController.clear();
     super.dispose();
   }
 
@@ -106,11 +106,20 @@ class _EventEditingPageState extends State<EventEditingPage> {
           border: UnderlineInputBorder(),
           hintText: 'Add Title',
         ),
-        onFieldSubmitted: (_) => saveForm(),
-        validator: (title) =>
-            title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: titleController,
       );
+
+  // Widget buildDescription() => TextFormField(
+  //       style: const TextStyle(fontSize: 24),
+  //       decoration: const InputDecoration(
+  //         border: UnderlineInputBorder(),
+  //         hintText: 'Add Title',
+  //       ),
+  //       onFieldSubmitted: (_) => saveForm(),
+  //       validator: (title) =>
+  //           title != null && title.isEmpty ? 'Title cannot be empty' : null,
+  //       controller: titleController,
+  //     );
 
   Widget buildDateTimePickers() => Column(
         children: [
@@ -246,14 +255,18 @@ class _EventEditingPageState extends State<EventEditingPage> {
         title: titleController.text,
         // description: 'This is the description ',
         from: fromDate,
-        to: toDate,
+        to: toDate, 
+        description: null,
       );
 
-      createCloudEvent(title: titleController.text, from: fromDate, to: toDate);
+      createCloudEvent(
+          title: titleController.text,
+          from: fromDate,
+          to: toDate,
+          description: doc.description);
 
       final provider = Provider.of<EventProvider>(context, listen: false);
 
-      
       provider.addEvent(event);
       Navigator.of(context).pop();
     }
@@ -262,7 +275,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Future createCloudEvent(
       {required String title,
       required DateTime from,
-      required DateTime to}) async {
+      required DateTime to,
+      required String description}) async {
     final docUser =
         FirebaseFirestore.instance.collection(globals.userEmail).doc();
 
@@ -270,6 +284,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       'subject': title,
       'startTime': from,
       'endTime': to,
+      'description': description,
     };
 
     await docUser.set(json);

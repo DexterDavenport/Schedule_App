@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:scheduler/pages/login/create_account_page.dart';
 import 'package:scheduler/pages/login/forgot_password_page.dart';
 import 'package:scheduler/pages/home_page.dart';
-// import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/pages/contexts/themes.dart';
 import 'package:scheduler/pages/jobs_page.dart';
 import 'package:scheduler/pages/settings_page.dart';
-// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:scheduler/provider/event_provider.dart';
