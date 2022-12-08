@@ -14,13 +14,13 @@ flutter run
 
 ## Sources
 
-https://www.youtube.com/watch?v=LoDtxRkGDTw
-https://www.youtube.com/watch?v=3OROjbAQS8Y
-https://www.youtube.com/watch?v=e7XF37jVVLw
-https://www.youtube.com/watch?v=lhZGf0vcG7Y
+<https://www.youtube.com/watch?v=LoDtxRkGDTw>
+<https://www.youtube.com/watch?v=3OROjbAQS8Y>
+<https://www.youtube.com/watch?v=e7XF37jVVLw>
+<https://www.youtube.com/watch?v=lhZGf0vcG7Y>
 
-https://www.syncfusion.com/flutter-widgets
-https://pub.dev/packages/flutter_quill
-https://firebase.google.com/docs/firestore/query-data/queries?authuser=0&hl=en#dart
-https://firebase.google.com/docs/auth/flutter/start
-https://firebase.google.com/
+<https://www.syncfusion.com/flutter-widgets>
+<https://pub.dev/packages/flutter_quill>
+<https://firebase.google.com/docs/firestore/query-data/queries?authuser=0&hl=en#dart>
+<https://firebase.google.com/docs/auth/flutter/start>
+<https://firebase.google.com/>
